@@ -1,68 +1,309 @@
-<section aria-labelledby="articles-proceedings">
-  <h2 id="articles-proceedings">Articles and Proceedings</h2>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <ul>
+  <title>Siri Moen Gjersøe — Papers</title>
 
-    <li>
-      Gjersøe, S. &amp; Remijsen, B. (2023).
-      <i>Perceptual Sensitivity to Tonal Alignment in Nuer</i>.
-      <b>Language and Speech</b>, 67(1), 95–112.
-      <a href="https://journals.sagepub.com/doi/10.1177/00238309231162299" target="_blank">
-        DOI: 10.1177/00238309231162299
-      </a>
-    </li>
+  <meta name="description" content="Publications of Dr. Siri Moen Gjersøe: articles and proceedings." />
 
-    <li>
-      Gjersøe, S., Awasom, J. N., &amp; Paschen, L. (2019).
-      <i>Hybrid Falling Tones in Limbum</i>.
-      Proceedings of ACAL 47.
-    </li>
+  <style>
+    :root {
+      --bg: #f7f9ff;
+      --fg: #0b1020;
+      --muted: #4a5d73;
+      --link: #5b5bff;
+      --accent: #ff9f43;
+      --accent2: #10b981;
+      --accent3: #ec4899;
+      --card: #ffffff;
+      --border: #e3e8ff;
+      --panel: #eef2ff;
+      --shadow: 0 20px 45px rgba(92,99,255,.18);
+    }
 
-    <li>
-      Gjersøe, S. (2016).
-      <i>Cyclic Optimization of Floating L Tones in Kikuyu</i>.
-      Proceedings of NELS 46.
-      <a href="https://roa.rutgers.edu/content/article/files/1547_gjersoe_1.pdf" target="_blank">
-        PDF
-      </a>
-    </li>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #070b1a;
+        --fg: #e7ebff;
+        --muted: #9aa4c7;
+        --link: #9aa8ff;
+        --accent: #ffb454;
+        --accent2: #34d399;
+        --accent3: #f472b6;
+        --card: #0c132b;
+        --border: #1e2a5a;
+        --panel: #0a0f25;
+        --shadow: 0 30px 60px rgba(0,0,0,.6);
+      }
+    }
 
-    <li>
-      Gjersøe, S. (2016).
-      <i>Sharing Properties of Pseudo-Coordination in Norwegian</i>.
-      In K. Barnickel et al. (Eds.),
-      <i>Replicative Processes in Grammar</i>
-      (Linguistische Arbeitsberichte 93), 351–378.
-      Leipzig: Universität Leipzig.
-    </li>
+    * { box-sizing: border-box; }
 
-    <li>
-      Gjersøe, S., Awasom, J. N., &amp; Paschen, L. (2016).
-      <i>The Interaction of Lexical Tone and Phrase-level Intonation in Limbum</i>.
-      Proceedings of Speech Prosody MA.
-    </li>
+    body {
+      margin: 0;
+      font: 17px/1.75 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(900px 600px at 10% -10%, rgba(91,91,255,.25), transparent),
+        radial-gradient(800px 500px at 90% 10%, rgba(255,159,67,.22), transparent),
+        radial-gradient(700px 500px at 20% 90%, rgba(16,185,129,.18), transparent),
+        var(--bg);
+      color: var(--fg);
+    }
 
-    <li>
-      Gjersøe, S. (2016).
-      <i>Phonological Phrases in Kikuyu</i>.
-      In K. Bellamy et al. (Eds.),
-      <i>ConSOLE XXIII: Proceedings of the 23rd Conference of the Student Organization of Linguistics in Europe</i>
-      (7–9 January 2015, Paris).
-      Leiden: Leiden University Centre for Linguistics.
-      ISSN: 1574–499X.
-    </li>
+    header, main, footer {
+      max-width: 1080px;
+      margin: auto;
+      padding: 34px 24px;
+    }
 
-    <li>
-      Hamlaoui, F., Makasso, E.-M., &amp; Gjersøe, S. (2014).
-      <i>High Tone Spreading and Phonological Phrases in Basaa</i>.
-      In <i>TAL-2014</i>, 27–31.
-    </li>
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
-    <li>
-      Lee, S. J., &amp; Gjersøe, S. (2014).
-      <i>Segmental Effects on Tone: An Acoustic Analysis of Tonal Polarity in Xitsonga</i>.
-      In <i>TAL-2014</i>, 79–82.
-    </li>
+    .badge {
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--link), var(--accent));
+      color: white;
+      font-weight: 600;
+      letter-spacing: .04em;
+      box-shadow: var(--shadow);
+    }
 
-  </ul>
-</section>
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--link);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), var(--link));
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    /* PAGE HEADER */
+    h1 {
+      margin: 40px 0 12px;
+      font-size: clamp(34px, 5vw, 48px);
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, var(--link), var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-intro {
+      max-width: 700px;
+      color: var(--muted);
+    }
+
+    /* TABS */
+    .tabs {
+      margin-top: 50px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tab-buttons button {
+      background: linear-gradient(135deg, var(--card), var(--panel));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--link);
+      cursor: pointer;
+    }
+
+    .tab-buttons button.active {
+      background: linear-gradient(135deg, var(--link), var(--accent));
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-panel {
+      display: none;
+      margin-top: 32px;
+      padding: 36px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, var(--card), var(--panel));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .tab-panel.active { display: block; }
+
+    /* PAPERS LIST */
+    .papers-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .papers-list li {
+      margin-bottom: 24px;
+      padding-left: 18px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .papers-list a {
+      color: var(--link);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .papers-list a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 120px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer a { color: var(--link); text-decoration: none; margin: 0 6px; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="badge">Academic & Industry</div>
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./papers.html">Papers</a>
+      <a href="./projects.html">Scripts</a>
+      <a href="./talks.html">Talks</a>
+      <a href="mailto:siri.gjersoe@gmail.com">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h1>Papers & Publications</h1>
+  <p class="page-intro">Peer-reviewed articles and conference proceedings in phonology, tone, and prosody.</p>
+
+  <section class="tabs">
+    <div class="tab-buttons">
+      <button class="active" data-tab="articles">Journal Articles</button>
+      <button data-tab="proceedings">Proceedings</button>
+    </div>
+
+    <!-- ARTICLES TAB -->
+    <div class="tab-panel active" id="articles">
+      <ul class="papers-list">
+        <li>
+          Gjersøe, S. &amp; Remijsen, B. (2023).
+          <i>Perceptual Sensitivity to Tonal Alignment in Nuer</i>.
+          <b>Language and Speech</b>, 67(1), 95–112.
+          <a href="https://journals.sagepub.com/doi/10.1177/00238309231162299" target="_blank">
+            DOI
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PROCEEDINGS TAB -->
+    <div class="tab-panel" id="proceedings">
+      <ul class="papers-list">
+        <li>
+          Gjersøe, S., Awasom, J. N., &amp; Paschen, L. (2019).
+          <i>Hybrid Falling Tones in Limbum</i>.
+          Proceedings of ACAL 47.
+        </li>
+
+        <li>
+          Gjersøe, S. (2016).
+          <i>Cyclic Optimization of Floating L Tones in Kikuyu</i>.
+          Proceedings of NELS 46.
+          <a href="https://roa.rutgers.edu/content/article/files/1547_gjersoe_1.pdf" target="_blank">PDF</a>
+        </li>
+
+        <li>
+          Gjersøe, S. (2016).
+          <i>Sharing Properties of Pseudo-Coordination in Norwegian</i>.
+          In K. Barnickel et al. (Eds.),
+          <i>Replicative Processes in Grammar</i>
+          (Linguistische Arbeitsberichte 93), 351–378.
+          Leipzig: Universität Leipzig.
+        </li>
+
+        <li>
+          Gjersøe, S., Awasom, J. N., &amp; Paschen, L. (2016).
+          <i>The Interaction of Lexical Tone and Phrase-level Intonation in Limbum</i>.
+          Proceedings of Speech Prosody MA.
+        </li>
+
+        <li>
+          Gjersøe, S. (2016).
+          <i>Phonological Phrases in Kikuyu</i>.
+          In K. Bellamy et al. (Eds.),
+          <i>ConSOLE XXIII</i>.
+          Leiden: Leiden University Centre for Linguistics.
+        </li>
+
+        <li>
+          Hamlaoui, F., Makasso, E.-M., &amp; Gjersøe, S. (2014).
+          <i>High Tone Spreading and Phonological Phrases in Basaa</i>.
+          In <i>TAL-2014</i>, 27–31.
+        </li>
+
+        <li>
+          Lee, S. J., &amp; Gjersøe, S. (2014).
+          <i>Segmental Effects on Tone: An Acoustic Analysis of Tonal Polarity in Xitsonga</i>.
+          In <i>TAL-2014</i>, 79–82.
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="y"></span> Siri Moen Gjersøe ·
+  <a href="https://github.com/SiriGjersoe">GitHub</a> ·
+  <a href="https://orcid.org/0000-0003-0800-1991">ORCID</a>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const buttons = document.querySelectorAll('.tab-buttons button');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
+
