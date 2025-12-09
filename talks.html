@@ -1,191 +1,107 @@
-<section style="margin-top:80px;">
+<style>
+  :root {
+    --bg: #f7f9ff;
+    --fg: #0b1020;
+    --muted: #4a5d73;
+    --link: #5b5bff;
+    --accent: #ff9f43;
+    --accent2: #10b981;
+    --accent3: #ec4899;
+    --card: #ffffff;
+    --border: #e3e8ff;
+    --panel: #eef2ff;
+    --shadow: 0 20px 45px rgba(92,99,255,.18);
+  }
 
-  <h2>Academic Presentations</h2>
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #070b1a;
+      --fg: #e7ebff;
+      --muted: #9aa4c7;
+      --link: #9aa8ff;
+      --accent: #ffb454;
+      --accent2: #34d399;
+      --accent3: #f472b6;
+      --card: #0c132b;
+      --border: #1e2a5a;
+      --panel: #0a0f25;
+      --shadow: 0 30px 60px rgba(0,0,0,.6);
+    }
+  }
 
-  <div class="grid">
+  * { box-sizing: border-box; }
 
-    <!-- 2024 -->
-    <article class="card">
-      <h3>Leipzig University (2024)</h3>
-      <p>
-        <i>Tone in the Ethiopian Variant of Nuer</i>.<br>
-        Grammatical Structures of Nilo-Saharan Workshop, May 13.
-      </p>
-    </article>
+  body {
+    margin: 0;
+    font: 17px/1.75 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
+    background:
+      radial-gradient(900px 600px at 10% -10%, rgba(91,91,255,.25), transparent),
+      radial-gradient(800px 500px at 90% 10%, rgba(255,159,67,.22), transparent),
+      radial-gradient(700px 500px at 20% 90%, rgba(16,185,129,.18), transparent),
+      var(--bg);
+    color: var(--fg);
+  }
 
-    <!-- 2020 -->
-    <article class="card">
-      <h3>University of Edinburgh (2020)</h3>
-      <p>
-        <i>Tonal Polarity and Allomorphy in Nuer</i>.<br>
-        Colloquium Nilotic@Edinburgh.
-      </p>
-    </article>
+  header, main, footer {
+    max-width: 1080px;
+    margin: auto;
+    padding: 34px 24px;
+  }
 
-    <!-- 2017 -->
-    <article class="card">
-      <h3>Leipzig University (2017)</h3>
-      <p>
-        <i>A Strict Cycle Effect in Nuer</i>.<br>
-        Workshop on Strata, July 20.
-      </p>
-    </article>
+  h1 {
+    margin: 40px 0 12px;
+    font-size: clamp(34px, 5vw, 48px);
+    letter-spacing: -0.03em;
+    background: linear-gradient(to right, var(--link), var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-    <article class="card">
-      <h3>Addis Ababa (2017)</h3>
-      <p>
-        <i>Grammatical Tone in Eastern Jikany Nuer</i>.<br>
-        Invited talk, Institute of Linguistics, June 28.
-      </p>
-    </article>
+  h2 {
+    margin-top: 60px;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+  }
 
-    <article class="card">
-      <h3>Nilo-Saharan Colloquium (2017)</h3>
-      <p>
-        <i>Tonal Marking of Case in Nuer</i>.<br>
-        Addis Ababa University, May 4.
-      </p>
-    </article>
+  .grid {
+    display: grid;
+    gap: 26px;
+    margin-top: 32px;
+  }
 
-    <article class="card">
-      <h3>Fonologi i Norden (2017)</h3>
-      <p>
-        <i>Tonal Exponence of the Genitive Case in Nuer</i>.<br>
-        Kristiansand, February 24–25.
-      </p>
-    </article>
+  @media (min-width: 820px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
 
-    <!-- 2016 -->
-    <article class="card">
-      <h3>University of Edinburgh (2016)</h3>
-      <p>
-        <i>Tone and Nominal Inflection in Nuer</i>.<br>
-        Phonetics/Phonology Workshop, December 8.
-      </p>
-    </article>
+  .card {
+    padding: 30px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, var(--card), var(--panel));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform .3s ease, box-shadow .3s ease;
+    position: relative;
+    overflow: hidden;
+  }
 
-    <article class="card">
-      <h3>Leiden University (2016)</h3>
-      <p>
-        <i>Tone in Nuer Nouns: Oblique Case and the Construct Form</i>.<br>
-        Colloquium on African Languages and Linguistics, August 29–31.
-      </p>
-    </article>
+  .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 40px 80px rgba(91,99,255,.35);
+  }
 
-    <article class="card">
-      <h3>Goethe University Frankfurt (2016)</h3>
-      <p>
-        <i>A Pilot Study of Tone in Nuer Nouns</i>.<br>
-        Invited talk, Phonology Colloquium, June 15.
-      </p>
-    </article>
+  .card h3 { margin: 0 0 10px; font-size: 20px; }
+  .card p { margin: 0; color: var(--muted); }
 
-    <article class="card">
-      <h3>Speech Prosody – Boston (2016)</h3>
-      <p>
-        <i>The Interaction of Lexical Tone and Phrase-Level Intonation in Limbum</i>.<br>
-        Poster, May 31–June 3.
-      </p>
-    </article>
+  footer {
+    margin-top: 120px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+  }
 
-    <article class="card">
-      <h3>ACAL 47 – Berkeley (2016)</h3>
-      <p>
-        <i>Not All Tone Is Lexical: Evidence for a Sentence-Final L Boundary Tone in Limbum</i>.<br>
-        Poster, March 23–26.
-      </p>
-    </article>
-
-    <!-- 2015 -->
-    <article class="card">
-      <h3>OCP – Barcelona (2015)</h3>
-      <p>
-        <i>Downstep and Phonological Phrases in Kikuyu</i>.<br>
-        January 27–30.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>ConSOLE – Paris (2015)</h3>
-      <p>
-        <i>Downstep and Phonological Phrases in Kikuyu</i>.<br>
-        Poster, January 7–9.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>Leipzig University (2015)</h3>
-      <p>
-        <i>Floating L Tones in Kikuyu: Domain Sensitivity and Tonal Interactions</i>.<br>
-        Workshop on Morphosyntactic Triggers of Tone, June 12–13.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>Leipzig University (2015)</h3>
-      <p>
-        <i>Sharing Properties of Pseudo-Coordination in Norwegian</i>.<br>
-        Workshop on Replicative Processes in Grammar, October 1–2.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>NELS 46 – Montréal (2015)</h3>
-      <p>
-        <i>The Syntax–Prosody Interface of Downstep in Kikuyu</i>.<br>
-        Poster, October 16–18.
-      </p>
-    </article>
-
-    <!-- 2014 -->
-    <article class="card">
-      <h3>Humboldt University Berlin (2014)</h3>
-      <p>
-        <i>Downstep and Phonological Phrases in Kikuyu</i>.<br>
-        Linguistics Colloquium, October 21.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>LabPhon – Tokyo (2014)</h3>
-      <p>
-        <i>Tonal Polarity in Xitsonga as a Tonal Artifact</i>.<br>
-        Poster, July 25–27.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>TAL – Nijmegen (2014)</h3>
-      <p>
-        <i>High Tone Spreading and Phonological Phrases in Basàa</i>.<br>
-        May 13–16.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>TAL – Nijmegen (2014)</h3>
-      <p>
-        <i>Segmental Effects on Tone: Tonal Polarity in Xitsonga</i>.<br>
-        May 13–16.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>Montréal (2014)</h3>
-      <p>
-        <i>Phonological Phrases in Basàa</i>.<br>
-        Poster, Exploring the Interfaces 3, May 8–10.
-      </p>
-    </article>
-
-    <!-- 2013 -->
-    <article class="card">
-      <h3>DGfS – Potsdam (2013)</h3>
-      <p>
-        <i>Magnitude Estimation as a Method for Collecting Acceptability Judgments</i>.<br>
-        Poster, March 12–15.
-      </p>
-    </article>
-
-  </div>
-</section>
+  footer a {
+    color: var(--link);
+    text-decoration: none;
+    margin: 0 6px;
+  }
+</style>
