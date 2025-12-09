@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Siri Moen Gjersøe — Scripts</title>
+  <meta name="description" content="Research scripts by Dr. Siri Moen Gjersøe: Praat, NLP, and R." />
+
+  <style>
+    :root {
+      --bg: #f7f9ff;
+      --fg: #0b1020;
+      --muted: #4a5d73;
+      --link: #5b5bff;
+      --accent: #ff9f43;
+      --accent2: #10b981;
+      --accent3: #ec4899;
+      --card: #ffffff;
+      --border: #e3e8ff;
+      --panel: #eef2ff;
+      --shadow: 0 20px 45px rgba(92,99,255,.18);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #070b1a;
+        --fg: #e7ebff;
+        --muted: #9aa4c7;
+        --link: #9aa8ff;
+        --accent: #ffb454;
+        --accent2: #34d399;
+        --accent3: #f472b6;
+        --card: #0c132b;
+        --border: #1e2a5a;
+        --panel: #0a0f25;
+        --shadow: 0 30px 60px rgba(0,0,0,.6);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font: 17px/1.75 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(900px 600px at 10% -10%, rgba(91,91,255,.25), transparent),
+        radial-gradient(800px 500px at 90% 10%, rgba(255,159,67,.22), transparent),
+        radial-gradient(700px 500px at 20% 90%, rgba(16,185,129,.18), transparent),
+        var(--bg);
+      color: var(--fg);
+    }
+
+    header, main, footer {
+      max-width: 1080px;
+      margin: auto;
+      padding: 34px 24px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .badge {
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--link), var(--accent));
+      color: white;
+      font-weight: 600;
+      letter-spacing: .04em;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--link);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), var(--link));
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    h1 {
+      margin: 40px 0 12px;
+      font-size: clamp(34px, 5vw, 48px);
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, var(--link), var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-intro {
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    /* TABS */
+    .tabs {
+      margin-top: 50px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .tab-buttons button {
+      background: linear-gradient(135deg, var(--card), var(--panel));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--link);
+      cursor: pointer;
+    }
+
+    .tab-buttons button.active {
+      background: linear-gradient(135deg, var(--link), var(--accent));
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-panel {
+      display: none;
+      margin-top: 32px;
+    }
+
+    .tab-panel.active { display: block; }
+
+    .grid {
+      display: grid;
+      gap: 26px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 820px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      padding: 30px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--card), var(--panel));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform .3s ease, box-shadow .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 40px 80px rgba(91,99,255,.35);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .card a {
+      color: var(--link);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 120px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer a { color: var(--link); text-decoration: none; margin: 0 6px; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="badge">Academic & Industry</div>
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./papers.html">Papers</a>
+      <a href="./projects.html">Scripts</a>
+      <a href="./talks.html">Talks</a>
+      <a href="mailto:siri.gjersoe@gmail.com">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h1>Research Scripts</h1>
+  <p class="page-intro">
+    Code for phonetics, corpus linguistics, NLP, and experimental research.
+  </p>
+
+  <section class="tabs">
+    <div class="tab-buttons">
+      <button class="active" data-tab="praat">Praat Scripts</button>
+      <button data-tab="nlp">NLP Scripts</button>
+      <button data-tab="r">R Scripts</button>
+    </div>
+
+    <!-- PRAAT -->
+    <div class="tab-panel active" id="praat">
+      <div class="grid">
+
+        <article class="card">
+          <h3>Vowel Detection</h3>
+          <p>Automatic vowel identification & segmentation.</p>
+          <p>
+            <a href="https://github.com/SiriGjersoe" target="_blank">View on GitHub</a>
+          </p>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- NLP -->
+    <div class="tab-panel" id="nlp">
+      <div class="grid">
+
+        <article class="card">
+          <h3>Keyword Extractor (KeyBERT)</h3>
+          <p>Automatic keyword extraction using transformer embeddings.</p>
+          <p>
+            <a href="https://github.com/SiriGjersoe/Python_scripts/blob/main/keyword_extractor_keybert.py" target="_blank">
+              View on GitHub
+            </a>
+          </p>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- R -->
+    <div class="tab-panel" id="r">
+      <div class="grid">
+
+        <article class="card">
+          <h3>Phonetic Data Visualization</h3>
+          <p>Formant normalization & tone plotting.</p>
+          <p>
+            <a href="https://github.com/SiriGjersoe" target="_blank">View on GitHub</a>
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="y"></span> Siri Moen Gjersøe ·
+  <a href="https://github.com/SiriGjersoe">GitHub</a> ·
+  <a href="https://orcid.org/0000-0003-0800-1991">ORCID</a>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const buttons = document.querySelectorAll('.tab-buttons button');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
